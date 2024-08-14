@@ -1,0 +1,18 @@
+releases:
+  - name: cert-manager
+    namespace: cert-manager
+    chart: jetstack/cert-manager
+    createNamespace: true
+    wait: true
+    waitForJobs: true
+    values:
+      - config/values/cert-manager.yaml
+
+  - name: traefik
+    namespace: kube-system
+    chart: traefik/traefik
+    createNamespace: true
+    wait: true
+    waitForJobs: true
+    values:
+      - config/values/traefik.yaml
