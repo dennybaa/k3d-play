@@ -11,7 +11,7 @@ releases:
     chart: argo/argo-cd
     createNamespace: true
     values:
-      - ../values/argo.yaml
+      - values/argo.yaml
 
   - name: crossplane
     chart: crossplane/crossplane
@@ -19,4 +19,4 @@ releases:
     namespace: crossplane-system
     createNamespace: true
     values:
-      - ../values/crossplane.yaml
+      - values/crossplane.yaml
