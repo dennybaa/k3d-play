@@ -16,6 +16,14 @@ Bootstraps cluster named `play` with:
 
 The CA certificate file is written into `ca-cert.pem` and can be imported into the browser for secure `*.localhost` `*.play.localhost` connections. Chrome doesn't trust `*.localhost` by default, thus cert-manager should be used to issue certificates (see bitnami tls example bellow).
 
+## Usage
+
+```shell
+just
+# or
+just destroy
+```
+
 ## Tips
 
 ### bitnami tls
