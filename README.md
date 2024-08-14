@@ -26,6 +26,17 @@ just destroy
 
 ## Tips
 
+### redirect using traefik middleware
+
+```yaml
+ingress:
+  enabled: true
+  annotations:
+    ###                                               {namespace}-middleware-name@provider
+    traefik.ingress.kubernetes.io/router.middlewares: kube-system-redirect-to-https@kubernetescrd
+    kubernetes.io/tls-acme: "true"
+```
+
 ### bitnami tls
 
 ```yaml

@@ -1,0 +1,27 @@
+# code: language=helm
+global:
+  domain: argo.localhost
+
+server:
+  ingress:
+    enabled: true
+    annotations:
+      traefik.ingress.kubernetes.io/router.middlewares: kube-system-redirect-to-https@kubernetescrd
+      kubernetes.io/tls-acme: "true"
+
+    extraTls:
+      - hosts:
+        - argo.localhost
+        secretName: argo.localhost-tls
+
+configs:
+  params:
+    server.insecure: true
+
+  secret:
+    # admin/argo
+    argocdServerAdminPassword: "$2a$10$oomB93wUtpphAfmoekWYje20O7QLfhcircen8.5/RJXJHtXEOZUk."
+    argocdServerAdminPasswordMtime: "2024-08-14T14:34:16Z"
+
+  cm:
+    timeout.reconciliation: 60s

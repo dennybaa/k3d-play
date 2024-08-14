@@ -1,0 +1,25 @@
+image:
+  pullPolicy: Always
+
+args:
+  - --enable-composition-functions
+  - --enable-composition-webhook-schema-validation
+
+affinity:
+  podAntiAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+            - key: app
+              operator: In
+              values:
+                - crossplane
+            - key: app.kubernetes.io/instance
+              operator: In
+              values:
+                - crossplane
+            - key: app.kubernetes.io/component
+              operator: In
+              values:
+                - cloud-infrastructure-controller
+        topologyKey: topology.kubernetes.io/zone

@@ -18,9 +18,21 @@ service:
   ipFamilyPolicy: PreferDualStack
 
 additionalArguments:
+  - --providers.kubernetescrd.allowCrossNamespace=true
   - --providers.kubernetesingress.ingressendpoint.publishedservice=kube-system/traefik
 
 tlsStore:
   default:
     defaultCertificate:
       secretName: traefik-default-tls
+
+extraObjects:
+  - |-
+    apiVersion: traefik.io/v1alpha1
+    kind: Middleware
+    metadata:
+      name: redirect-to-https
+    spec:
+      redirectScheme:
+        scheme: https
+        permanent: true
